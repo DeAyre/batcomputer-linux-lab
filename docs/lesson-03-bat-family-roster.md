@@ -87,7 +87,6 @@ sudo usermod -aG batfamily,fieldops dick
 ## Key Takeaways
 - **Always `usermod -aG`, never `-G` alone.** Without the `-a`, it replaces a user's groups instead of adding to them.
 - **Make scripts idempotent.** Checking whether something exists first means I can re-run a script safely.
-- **Use `visudo`, not a text editor, for sudo rules.** It checks the syntax first, and a broken sudoers file can lock out root access. Scoped rules, like one exact command, are safer than broad ones.
 - **Verify every step.** `getent`, `id`, `passwd -S`, and `bash -n` catch problems early.
 - **Small typos cause confusing errors.** The error message usually points at the exact problem if I read it carefully.
 
