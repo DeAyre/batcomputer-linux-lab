@@ -28,14 +28,26 @@ This lesson was about how Linux handles people. I created the whole Bat Family a
 Only `penny1`, `bruce`, and `alfred` get full sudo. That's least privilege: nobody gets more access than their role needs.
 
 ### How I built it
-- **A re-runnable script** ([`03-create-users.sh`](../scripts/03-create-users.sh)) that creates the groups, then the users, and skips anyone who already exists. Running it twice proves it's safe to re-run.
-- **Passwords and policy:** I set passwords interactively so they never land in my shell history, and used `chage` to set password aging (90-day max) and Gordon's 30-day account expiry.
-- **A locked account:** `usermod -L jason`, then confirmed with `passwd -S` that the status shows `L`.
-- **A scoped sudo rule:** the `intel` group can run exactly one command, reading the last 50 lines of the auth log. I wrote it in `/etc/sudoers.d/` with `visudo` so a typo can't lock me out of sudo. The rule is in [`docs/sudoers-batfamily.txt`](sudoers-batfamily.txt).
-- **A roster script** ([`roster.sh`](../scripts/roster.sh)) that prints every real user with their UID, lock status, full name, and groups. Output: [`docs/roster-output.txt`](roster-output.txt).
+
+**A re-runnable script.** [`03-create-users.sh`](../scripts/03-create-users.sh) creates the groups, then the users, and skips anyone who already exists. Running it a second time proves it's safe to re-run: every user gets skipped.
+
+![Re-running the create-users script skips existing users](../images/lesson3-script-rerun.png)
+
+**Passwords and policy.** I set passwords interactively so they never land in my shell history, and used `chage` to set Gordon's 30-day account expiry. The output shows both the account expiry date and a 30-day maximum password age.
+
+![Gordon's account and password expiry](../images/lesson3-gordon-expiry.png)
+
+**A locked account.** I locked Jason with `usermod -L jason`, then checked with `passwd -S`. The `L` in the second column means locked. The screenshot also shows the groups and their members.
+
+![Jason's account shows status L (locked)](../images/lesson3-jason-locked.png)
+
+**A scoped sudo rule.** The `intel` group can run exactly one command: reading the last 50 lines of the auth log. I wrote it in `/etc/sudoers.d/` with `visudo` so a typo can't lock me out of sudo. The rule is in [`docs/sudoers-batfamily.txt`](sudoers-batfamily.txt).
+
+**SSH key login.** I generated an ed25519 key on my Mac and copied it to the VM through the port forward, so I log in with a key instead of an account password.
+
+**A roster script.** [`roster.sh`](../scripts/roster.sh) prints every real user with their UID, lock status, full name, and groups. The top rows in this screenshot are from an earlier run, before I fixed Dick's name. The later output is the corrected version.
 
 ![Roster script output](../images/lesson3-roster-output.png)
-
 ## Issues I Ran Into
 
 ### 1. The groups didn't exist yet
