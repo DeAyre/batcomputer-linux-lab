@@ -1,0 +1,7 @@
+# Intel team may read the recent auth log without a full root shell
+
+%intel ALL=(root) /usr/bin/tail -n 50 /var/log/auth.log
+
+
+
+
