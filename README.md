@@ -20,7 +20,22 @@ I'm working toward a career in network engineering, so I'm using this lab to bui
 |--------|-------|--------|
 | [01](docs/lesson-01-setup-and-packages.md) | Setup, system checks, and package management | ✅ Done |
 | [02](docs/lesson-02-batcave-filesystem.md) | The Linux file system: building the Batcave | ✅ Done |
-| 03 | Users and groups | 🔜 Up next |
+| [03](docs/lesson-03-bat-family-roster.md) | Users and groups: the Bat Family roster | ✅ Done |
+| 04 | Case files: file management and Vim | 🔜 Up next |
+
+
+## Whats in the Lab so Far
+- **A Bat Family roster** of 8 users and a service account across 5 groups, created by a re-runnable script (`03-create-users.sh`)
+- **Account controls:** a locked account, a 30-day account expiry, password aging, and a scoped sudo rule that lets one group run exactly one command
+- **SSH key login** from my MacBook through the VMware port forward
+- **A roster script** (`roster.sh`) that lists every user with their UID, lock status, and groups
+
+
+## Skills Demostrated
+- User and group management (`useradd`, `usermod`, `groupadd`, `passwd`, `chage`)
+- Least-privilege access with scoped sudo rules (`visudo`)
+- Idempotent bash scripting with loops, `awk`, and `printf`
+- Debugging scripts from error messages and `bash -n`
 
 
 ## Credits
