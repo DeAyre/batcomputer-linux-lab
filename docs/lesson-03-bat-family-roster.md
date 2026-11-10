@@ -42,7 +42,6 @@ Only `penny1`, `bruce`, and `alfred` get full sudo. That's least privilege: nobo
 ![Jason's account shows status L (locked)](../scripts/images/lesson3-jason-locked.png)
 
 
-**SSH key login.** I generated an ed25519 key on my Mac and copied it to the VM through the port forward, so I log in with a key instead of an account password.
 
 **A roster script.** [`roster.sh`](../scripts/roster.sh) prints every real user with their UID, lock status, full name, and groups. The top rows in this screenshot are from an earlier run, before I fixed Dick's name. The later output is the corrected version.
 
