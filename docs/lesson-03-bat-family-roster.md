@@ -41,7 +41,6 @@ Only `penny1`, `bruce`, and `alfred` get full sudo. That's least privilege: nobo
 
 ![Jason's account shows status L (locked)](../scripts/images/lesson3-jason-locked.png)
 
-**A scoped sudo rule.** The `intel` group can run exactly one command: reading the last 50 lines of the auth log. I wrote it in `/etc/sudoers.d/` with `visudo` so a typo can't lock me out of sudo. The rule is in [`docs/sudoers-batfamily.txt`](sudoers-batfamily.txt).
 
 **SSH key login.** I generated an ed25519 key on my Mac and copied it to the VM through the port forward, so I log in with a key instead of an account password.
 
