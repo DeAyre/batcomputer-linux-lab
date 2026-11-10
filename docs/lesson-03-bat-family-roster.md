@@ -65,7 +65,8 @@ I used a `for` loop to set a password for every user, and it looked like it was 
 ### 3. The roster script: three errors, two typos
 The roster script was the hardest part of the lesson. I typed it into vim by hand, and it threw a chain of errors. I fixed them in order by reading what each message said.
 
-![Roster errors](../images/lesson3-roster-errors.png)
+
+![Roster errors](../scripts/images/lesson3-roster-errors.png)
 
 **Error 1: awk "unterminated string."** The line that builds the user list used `":"` inside the awk command, and the quotes didn't close properly. I rewrote it using `-v OFS=:`, which puts the colons between fields without any inner quotes.
 
@@ -73,7 +74,7 @@ The roster script was the hardest part of the lesson. I typed it into vim by han
 
 **Error 3: `printf: '\': invalid format character`.** At the end of the last line I had typed `%\n` instead of `%s\n`. The `%` needs a letter after it to say what kind of value goes there, so printf choked on the `\`.
 
-![The script with my typos](../images/lesson3-roster-script-typos.png)
+![The script with my typos](../scripts/images/lesson3-roster-script-typos.png)
 
 **Fix:** I edited lines 6, 9, and 12 in vim to add `-v OFS=:`, correct the `tr` command, and add the missing `s`. Then I checked the file with `bash -n`, which tests the syntax without running anything, and ran it again. The output came out clean.
 
