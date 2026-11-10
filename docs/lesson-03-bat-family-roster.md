@@ -32,7 +32,6 @@ Only `penny1`, `bruce`, and `alfred` get full sudo. That's least privilege: nobo
 - **Passwords and policy:** I set passwords interactively so they never land in my shell history, and used `chage` to set password aging (90-day max) and Gordon's 30-day account expiry.
 - **A locked account:** `usermod -L jason`, then confirmed with `passwd -S` that the status shows `L`.
 - **A scoped sudo rule:** the `intel` group can run exactly one command, reading the last 50 lines of the auth log. I wrote it in `/etc/sudoers.d/` with `visudo` so a typo can't lock me out of sudo. The rule is in [`docs/sudoers-batfamily.txt`](sudoers-batfamily.txt).
-- **SSH key login:** I generated an ed25519 key on my Mac and copied it to the VM through the port forward, so I log in with a key instead of an account password.
 - **A roster script** ([`roster.sh`](../scripts/roster.sh)) that prints every real user with their UID, lock status, full name, and groups. Output: [`docs/roster-output.txt`](roster-output.txt).
 
 ![Roster script output](../images/lesson3-roster-output.png)
