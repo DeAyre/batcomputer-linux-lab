@@ -22,7 +22,8 @@ I'm working toward a career in network engineering, so I'm using this lab to bui
 | [02](docs/lesson-02-batcave-filesystem.md) | The Linux file system: building the Batcave | ✅ Done |
 | [03](docs/lesson-03-bat-family-roster.md) | Users and groups: the Bat Family roster | ✅ Done |
 | [04](docs/lesson-04-case-files.md) | File management and log analysis: case files | ✅ Done |
-| 05 | File permissions and ACLs: clearance levels | 🔜 Up next |
+| [05](docs/lesson-05-clearance-levels.md) | File permissions and ACLs: clearance levels | ✅ Done |
+| 06 | Process management: watching the Batcave | 🔜 Up next |
 
 
 ## Whats in the Lab so Far
@@ -34,6 +35,11 @@ I'm working toward a career in network engineering, so I'm using this lab to bui
 - **A log investigation pipeline:** `gen-log.sh` creates a fake access log, and `threat-report.sh` reports failed logins, top source IPs, and recent alerts
 - **Backup and restore:** closed cases archived with `tar` and restored to a test folder to prove the backup works
 - **Evidence protection:** hard links vs. symlinks, and immutable files with `chattr +i`
+- **A clearance matrix:** every Batcave folder has an owner, group, and mode that matches the role allowed in, applied by one re-runnable script (`05-permissions.sh`)
+- **Special permission bits:** SGID keeps shared case files in the right group, and the sticky bit stops users from deleting each other's files
+- **ACLs for the exceptions:** read-only briefings for one user, config access for a group, and a mask-aware setup using `setfacl` and `getfacl`
+- **A tested access policy:** 16 `sudo -u` tests across different Bat Family members, with every allow and deny matching the matrix
+
 
 
 ## Skills Demostrated
@@ -46,6 +52,10 @@ I'm working toward a career in network engineering, so I'm using this lab to bui
 - Hard links, symlinks, and inodes
 - File attributes with `chattr` and `lsattr`
 - Debugging silent errors (empty variables, whitespace mismatches)
+- - File ownership and permissions (`chown`, `chgrp`, `chmod`, octal and symbolic modes)
+- Special permission bits (SGID and the sticky bit)
+- POSIX ACLs, including default ACLs and the mask (`setfacl`, `getfacl`)
+- Verifying access controls by testing as other users (`sudo -u`)
 
 
 ## Credits
