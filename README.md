@@ -23,7 +23,8 @@ I'm working toward a career in network engineering, so I'm using this lab to bui
 | [03](docs/lesson-03-bat-family-roster.md) | Users and groups: the Bat Family roster | ✅ Done |
 | [04](docs/lesson-04-case-files.md) | File management and log analysis: case files | ✅ Done |
 | [05](docs/lesson-05-clearance-levels.md) | File permissions and ACLs: clearance levels | ✅ Done |
-| 06 | Process management: watching the Batcave | 🔜 Up next |
+| [06](docs/lesson-06-watching-the-batcave.md) | Process management: services, signals, and timers | ✅ Done |
+| 07 | System monitoring and logging | 🔜 Up next |
 
 
 ## Whats in the Lab so Far
@@ -39,6 +40,10 @@ I'm working toward a career in network engineering, so I'm using this lab to bui
 - **Special permission bits:** SGID keeps shared case files in the right group, and the sticky bit stops users from deleting each other's files
 - **ACLs for the exceptions:** read-only briefings for one user, config access for a group, and a mask-aware setup using `setfacl` and `getfacl`
 - **A tested access policy:** 16 `sudo -u` tests across different Bat Family members, with every allow and deny matching the matrix
+- **A managed service:** the Lesson 4 threat report now runs as a systemd service (`batcave-threat-report.service`) under the `batsvc` service account, with access granted by a narrow ACL instead of group membership
+- **A hardened unit file:** restricting what the service can touch (network, kernel, home folders, privileges) took its `systemd-analyze security` score from 8.3 EXPOSED to 1.1 OK
+- **Scheduled automation:** a systemd timer runs the report every two minutes, compared against an equivalent cron job
+- **Process control practice:** job control, signals (`SIGTERM`, `SIGKILL`, `SIGSTOP`, `SIGCONT`), a `trap` demo, and priority with `nice` and `renice`
 
 
 
@@ -56,6 +61,11 @@ I'm working toward a career in network engineering, so I'm using this lab to bui
 - Special permission bits (SGID and the sticky bit)
 - POSIX ACLs, including default ACLs and the mask (`setfacl`, `getfacl`)
 - Verifying access controls by testing as other users (`sudo -u`)
+- - Process viewing and control (`ps`, `pstree`, `htop`, `kill`, `jobs`, `nice`, `renice`)
+- Writing and hardening systemd service and timer units
+- Service management and log reading (`systemctl`, `journalctl`)
+- Least-privilege service accounts with ACLs
+- Job scheduling with systemd timers and cron
 
 
 ## Credits
